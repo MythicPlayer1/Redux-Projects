@@ -1,20 +1,27 @@
-import React from 'react'
-import { Add_To_Cart } from '../Constants';
 
-const initialState={
-    cardData:[]
+import { Add_To_Cart, Remove_From_Cart } from '../Constants';
+
+const initialState = {
+    cardData: []
 }
-const cardItem = (state=[], action) => {
-    switch(action.type){
+const cardItem = (state = [], action) => {
+    switch (action.type) {
         case Add_To_Cart:
             console.log(action)
-            return[
+            return [
                 ...state,
-               {cardData: action.data}
+                { cardData: action.data }
             ]
-            break;
-            default:
-                return state
+        case Remove_From_Cart:
+          
+            state.pop();
+            return [
+                ...state,
+                
+            ]
+
+        default:
+            return state
     }
 
 }
