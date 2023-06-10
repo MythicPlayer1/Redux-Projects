@@ -1,9 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 
-export const store= configureStore({
+const store= configureStore({
     reducer:{
-        userData: ""
+        storedApiDatas : gitUser
     }
-}
-)
+})
