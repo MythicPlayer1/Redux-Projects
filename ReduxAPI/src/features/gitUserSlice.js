@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, isAsyncThunkAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const apiData= createAsyncThunk("userData", async ()=>{
     const response = await fetch("https://api.github.com/users");
@@ -15,19 +15,20 @@ export const gitUser= createSlice({
     },
    extraReducers:{
        [apiData.pending]:(state)=>{
-           state.loading=ture;
+           state.loading=true;
 
        },
-       [apiData.loading]:(state, action)=>{
+       [apiData.fulfilled]:(state, action)=>{
            state.loading=false;
            state.users=action.payload;
 
        },
        [apiData.rejected]:(state, action)=>{
-           state.loading=true,
-           state.error=action.payload
+           state.loading=false;
+           state.error=action.payload;
        }
    }
 })
+
 
 export default gitUser.reducer;

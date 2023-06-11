@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import gitUser from "../features/gitUserSlice";
 
 
-const store= configureStore({
+export const store= configureStore({
     reducer:{
         storedApiDatas : gitUser
     }
+    
 })
+
